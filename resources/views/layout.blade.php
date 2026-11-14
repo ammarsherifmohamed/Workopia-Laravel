@@ -22,6 +22,8 @@
         <x-hero />
     @endif
 
+    <x-top-banner/>
+
     <main>
         {{ $slot }}
     </main>
