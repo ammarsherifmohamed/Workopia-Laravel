@@ -1,5 +1,3 @@
-<x-header />
-
 <x-layout>
 
     <x-slot name="title">{{ $title }}</x-slot>
