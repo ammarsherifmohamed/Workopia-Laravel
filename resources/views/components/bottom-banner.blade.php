@@ -1,6 +1,6 @@
 @props(['title' => 'Looking to hire?', 'subtitle' => 'Post your job listing now and find the perfect candidate.'])
 
-<section class="container mx-auto my-6">
+<section style="width: 80%" class="container mx-auto my-6">
     <div class="bg-blue-800 text-white rounded p-4 flex items-center justify-between">
         <div>
             <h2 class="text-xl font-semibold">{{ $title }}</h2>
