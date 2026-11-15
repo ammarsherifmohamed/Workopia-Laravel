@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', [HomeController::class, "index"]);
-Route::get("/jobs", [JobController::class, "index"]);
+Route::get("/jobs", [JobController::class, "index"])->name("jobIndex");
 Route::get("/jobs/create", [JobController::class, "create"]);
 Route::post("/jobs/create" , [JobController::class,"store"]);
+Route::get("/jobs/{job}" , [JobController::class,"show"])->name("jobs.show");
 
 // Route::resource("jobs" , JobController::class);

@@ -1,19 +1,14 @@
 <x-layout>
 
-    <x-slot name="title">{{ $title }}</x-slot>
-    <x-slot name="subtitle">{{ $subtitle }}</x-slot>
+    <ul>
+        @forelse ($jobs as $job)
+            <li> <a href="{{ route("jobs.show" , $job->id) }}">{{ $job->title }}</a>
+                - {{ $job->description }}
+            </li>
+        @empty
+            <p>No jobs available.</p>
+        @endforelse
 
-    <x-slot name="jobs">
-        <ul>
-            @forelse ($jobs as $job)
-                <li>
-                    {{ $loop->iteration }}-{{ $job }}
-                </li>
-            @empty
-                <p>No jobs available.</p>
-            @endforelse
-
-        </ul>
-    </x-slot>
+    </ul>
 
 </x-layout>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Job;
+use Pest\Support\View;
 
 class JobController extends Controller
 {
@@ -11,16 +13,9 @@ class JobController extends Controller
      */
     public function index()
     {
-        $title = "Available Jobs";
-        $subtitle = "Here You Can Find All Jobs";
-        $jobs = [
-            "Web Developer",
-            "Database Adminstration",
-            "Frontend Developer",
-            "UI UX Designer",
-        ];
+        $jobs = Job::all();
 
-        return view("jobs.index", compact("title", "jobs" , "subtitle"));
+        return view("jobs.index", compact("jobs"));
     }
 
     /**
@@ -39,16 +34,18 @@ class JobController extends Controller
         $title = $request->input("title");
         $description = $request->input("description");
 
-        return "the title: " . $title . "," . "description: " . $description;
+        Job::create(["title" => $title, "description" => $description]);
+
+        return redirect()->route("jobIndex");
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Job $job)
     {
-        //
+        return view("jobs.show")->with("job", $job);
     }
 
     /**
